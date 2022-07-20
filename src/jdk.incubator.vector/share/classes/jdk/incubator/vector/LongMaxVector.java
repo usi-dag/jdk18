@@ -654,8 +654,10 @@ final class LongMaxVector extends LongVector {
         }
 
         @ForceInline
-        /* package-private */
-        LongMaxMask xor(VectorMask<Long> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public LongMaxMask xor(VectorMask<Long> mask) {
             Objects.requireNonNull(mask);
             LongMaxMask m = (LongMaxMask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, LongMaxMask.class, null, long.class, VLENGTH,

@@ -664,8 +664,10 @@ final class IntMaxVector extends IntVector {
         }
 
         @ForceInline
-        /* package-private */
-        IntMaxMask xor(VectorMask<Integer> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public IntMaxMask xor(VectorMask<Integer> mask) {
             Objects.requireNonNull(mask);
             IntMaxMask m = (IntMaxMask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, IntMaxMask.class, null, int.class, VLENGTH,

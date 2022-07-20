@@ -670,8 +670,10 @@ final class Int128Vector extends IntVector {
         }
 
         @ForceInline
-        /* package-private */
-        Int128Mask xor(VectorMask<Integer> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public Int128Mask xor(VectorMask<Integer> mask) {
             Objects.requireNonNull(mask);
             Int128Mask m = (Int128Mask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, Int128Mask.class, null, int.class, VLENGTH,

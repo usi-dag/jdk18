@@ -937,8 +937,10 @@ final class $vectortype$ extends $abstractvectortype$ {
         }
 
         @ForceInline
-        /* package-private */
-        $masktype$ xor(VectorMask<$Boxtype$> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public $masktype$ xor(VectorMask<$Boxtype$> mask) {
             Objects.requireNonNull(mask);
             $masktype$ m = ($masktype$)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, $masktype$.class, null, $bitstype$.class, VLENGTH,

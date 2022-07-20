@@ -664,8 +664,10 @@ final class ByteMaxVector extends ByteVector {
         }
 
         @ForceInline
-        /* package-private */
-        ByteMaxMask xor(VectorMask<Byte> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public ByteMaxMask xor(VectorMask<Byte> mask) {
             Objects.requireNonNull(mask);
             ByteMaxMask m = (ByteMaxMask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, ByteMaxMask.class, null, byte.class, VLENGTH,

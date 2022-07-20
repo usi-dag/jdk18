@@ -678,8 +678,10 @@ final class Byte64Vector extends ByteVector {
         }
 
         @ForceInline
-        /* package-private */
-        Byte64Mask xor(VectorMask<Byte> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public Byte64Mask xor(VectorMask<Byte> mask) {
             Objects.requireNonNull(mask);
             Byte64Mask m = (Byte64Mask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, Byte64Mask.class, null, byte.class, VLENGTH,

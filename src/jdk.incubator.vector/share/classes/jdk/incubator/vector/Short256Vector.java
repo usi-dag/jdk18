@@ -694,8 +694,10 @@ final class Short256Vector extends ShortVector {
         }
 
         @ForceInline
-        /* package-private */
-        Short256Mask xor(VectorMask<Short> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public Short256Mask xor(VectorMask<Short> mask) {
             Objects.requireNonNull(mask);
             Short256Mask m = (Short256Mask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, Short256Mask.class, null, short.class, VLENGTH,

@@ -652,8 +652,10 @@ final class DoubleMaxVector extends DoubleVector {
         }
 
         @ForceInline
-        /* package-private */
-        DoubleMaxMask xor(VectorMask<Double> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public DoubleMaxMask xor(VectorMask<Double> mask) {
             Objects.requireNonNull(mask);
             DoubleMaxMask m = (DoubleMaxMask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, DoubleMaxMask.class, null, long.class, VLENGTH,

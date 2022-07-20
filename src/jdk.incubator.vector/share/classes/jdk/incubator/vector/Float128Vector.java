@@ -659,8 +659,10 @@ final class Float128Vector extends FloatVector {
         }
 
         @ForceInline
-        /* package-private */
-        Float128Mask xor(VectorMask<Float> mask) {
+        /* package-private
+        edited by Luca Omini on July 20, allow xor to be public instead to use not().eq()
+        */
+        public Float128Mask xor(VectorMask<Float> mask) {
             Objects.requireNonNull(mask);
             Float128Mask m = (Float128Mask)mask;
             return VectorSupport.binaryOp(VECTOR_OP_XOR, Float128Mask.class, null, int.class, VLENGTH,
